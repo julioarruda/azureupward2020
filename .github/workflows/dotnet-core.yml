@@ -30,7 +30,7 @@ jobs:
 
     - uses: papeloto/action-zip@v1
       with:
-        files: ${{ github.workspace }}/netcore
+        files: azureupward2020/azureupward2020/netcore
         dest: upward.zip
 
     - name: Upload Artifact
