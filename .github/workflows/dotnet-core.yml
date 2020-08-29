@@ -62,3 +62,9 @@ jobs:
         asset_path: ${{ github.workspace }}/upward.zip
         asset_name: upward.zip
         asset_content_type: application/zip
+
+    - uses: Azure/pipelines@v1
+      with:
+        azure-devops-project-url: 'https://dev.azure.com/demoserievideo1/AzureUpward'
+        azure-pipeline-name: 'upward' # name of the Azure pipeline to be triggered
+        azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
