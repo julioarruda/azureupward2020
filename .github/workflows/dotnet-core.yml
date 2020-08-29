@@ -26,12 +26,12 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     
     - name: Dotnet Publish
-      run: dotnet publish --configuration Release -o netcore 
+      run: dotnet publish --configuration Release -o ${{ github.workspace }}/upward 
       
 
     - uses: papeloto/action-zip@v1
       with:
-        files: /home/runner/work/azureupward2020/azureupward2020/netcore/
+        files: ${{ github.workspace }}/upward
         dest: upward.zip
 
     - name: Upload Artifact
