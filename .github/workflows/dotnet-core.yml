@@ -30,7 +30,7 @@ jobs:
       
     - name: Dir
       run: |
-        cd ${{ github.workspace }}/upward 
+        cd ${{ github.workspace }} 
         zip -r ${{ github.workspace }}/upward.zip upward 
       
 
