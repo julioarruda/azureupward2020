@@ -31,7 +31,7 @@ jobs:
     - name: Zip Package
       run: |
         cd ${{ github.workspace }}/upward 
-        zip -r ${{ github.workspace }}/upward.zip  
+        zip -r ${{ github.workspace }}/upward.zip *
       
 
     - name: Upload Artifact
