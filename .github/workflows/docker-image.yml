@@ -22,3 +22,9 @@ jobs:
         docker tag azureupward.azurecr.io/upward2020devops:${{ github.sha }} azureupward.azurecr.io/upward2020devops:latest
         docker push azureupward.azurecr.io/upward2020devops:${{ github.sha }}
         docker push azureupward.azurecr.io/upward2020devops:latest
+   
+    - uses: Azure/pipelines@v1
+      with:
+        azure-devops-project-url: 'https://dev.azure.com/demoserievideo1/AzureUpward'
+        azure-pipeline-name: 'upward-docker' # name of the Azure pipeline to be triggered
+        azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
