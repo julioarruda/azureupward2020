@@ -32,3 +32,9 @@ jobs:
       with:
         files: ${{ github.workspace }}/netcore
         dest: upward.zip
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifact
+        path: ${{ github.workspace }}//netcore.zip
