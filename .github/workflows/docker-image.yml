@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: azureupward.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        docker build . -t azureupward.azurecr.io/upward2020devops:${{ github.sha }}
+        docker tag azureupward.azurecr.io/upward2020devops:${{ github.sha }} azureupward.azurecr.io/upward2020devops:latest
+        docker push azureupward.azurecr.io/upward2020devops:${{ github.sha }}
+        docker push azureupward.azurecr.io/upward2020devops:latest
