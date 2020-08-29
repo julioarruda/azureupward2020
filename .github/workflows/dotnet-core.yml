@@ -27,11 +27,11 @@ jobs:
     
     - name: Dotnet Publish
       run: dotnet publish --configuration Release -o netcore 
-      working-directory: ./azureupward2020
+      
 
     - uses: papeloto/action-zip@v1
       with:
-        files: azureupward2020/azureupward2020/netcore
+        files: azureupward2020/netcore
         dest: upward.zip
 
     - name: Upload Artifact
