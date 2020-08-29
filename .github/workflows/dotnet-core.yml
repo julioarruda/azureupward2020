@@ -31,7 +31,7 @@ jobs:
 
     - uses: papeloto/action-zip@v1
       with:
-        files: azureupward2020/netcore
+        files: /home/runner/work/azureupward2020/azureupward2020/netcore/
         dest: upward.zip
 
     - name: Upload Artifact
