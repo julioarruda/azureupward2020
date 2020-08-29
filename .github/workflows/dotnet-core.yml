@@ -30,14 +30,8 @@ jobs:
       
     - name: Dir
       run: |
-        cd ${{ github.workspace }}/upward
-        ls 
+        zip -r ${{ github.workspace }}/upward.zip ${{ github.workspace }}/upward 
       
-
-    - uses: papeloto/action-zip@v1
-      with:
-        files: ${{ github.workspace }}/upward
-        dest: upward.zip
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1
