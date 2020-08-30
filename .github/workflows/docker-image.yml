@@ -11,11 +11,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - uses: Azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - uses: Azure/get-keyvault-secrets@v1.0
+      with:
+        keyvault: "kvupward"
+        secrets: 'kvusername, kvpassword'
+      id: kvupward
+    
     - uses: azure/docker-login@v1
       with:
         login-server: azureupward.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
+        username: ${{ steps.myGetSecretAction.outputs.kvusername }}
+        password: ${{ steps.myGetSecretAction.outputs.kvpassword }}
 
     - run: |
         docker build . -t azureupward.azurecr.io/upward2020devops:${{ github.sha }}
