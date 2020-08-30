@@ -25,8 +25,8 @@ jobs:
     - uses: azure/docker-login@v1
       with:
         login-server: azureupward.azurecr.io
-        username: ${{ steps.myGetSecretAction.outputs.kvusername }}
-        password: ${{ steps.myGetSecretAction.outputs.kvpassword }}
+        username: ${{ steps.kvupward.outputs.kvusername }}
+        password: ${{ steps.kvupward.outputs.kvpassword }}
 
     - run: |
         docker build . -t azureupward.azurecr.io/upward2020devops:${{ github.sha }}
