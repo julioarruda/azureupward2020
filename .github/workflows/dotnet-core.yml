@@ -72,7 +72,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: azureupward2020/arm/webapp.zip
+        asset_path: ./azureupward2020/arm/webapp.json
         asset_name: webapp.json
         asset_content_type: application/json
 
