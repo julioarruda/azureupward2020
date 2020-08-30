@@ -1,0 +1,175 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_azureupward_docker_name": {
+            "defaultValue": "azureupward-docker",
+            "type": "String"
+        },
+        "serverfarms_ASP_AzureUpWard2020_8d16_externalid": {
+            "defaultValue": "/subscriptions/fbef5108-6185-4658-9f2b-7a5f7d58b456/resourceGroups/AzureUpWard2020/providers/Microsoft.Web/serverfarms/ASP-AzureUpWard2020-8d16",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('sites_azureupward_docker_name')]",
+            "location": "Brazil South",
+            "kind": "app,linux,container",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_azureupward_docker_name'), '.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('sites_azureupward_docker_name'), '.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_ASP_AzureUpWard2020_8d16_externalid')]",
+                "reserved": true,
+                "isXenon": false,
+                "hyperV": false,
+                "siteConfig": {},
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": false,
+                "redundancyMode": "None"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2018-11-01",
+            "name": "[concat(parameters('sites_azureupward_docker_name'), '/web')]",
+            "location": "Brazil South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_azureupward_docker_name'))]"
+            ],
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "linuxFxVersion": "DOCKER|azureupward.azurecr.io/upward2020devops:latest",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2019",
+                "httpLoggingEnabled": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$azureupward-docker",
+                "azureStorageAccounts": {},
+                "scmType": "VSTSRM",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": true,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": true
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 1,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "ftpsState": "AllAllowed",
+                "reservedInstanceCount": 0
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2018-11-01",
+            "name": "[concat(parameters('sites_azureupward_docker_name'), '/11598730161100')]",
+            "location": "Brazil South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_azureupward_docker_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author": "Hosted Agent",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"releaseId\":\"1\",\"releaseName\":\"Release-1\",\"collectionUrl\":\"https://dev.azure.com/demoserievideo1/\",\"teamProject\":\"f4357a81-3fe5-4dbd-9302-3c0d79586988\",\"buildProjectUrl\":\"https://dev.azure.com/demoserievideo1/f4357a81-3fe5-4dbd-9302-3c0d79586988\",\"repositoryUrl\":\"\",\"teamProjectName\":\"AzureUpward\",\"slotName\":\"production\"}",
+                "start_time": "2020-08-29T19:42:42.0827623Z",
+                "end_time": "2020-08-29T19:42:42.0827623Z",
+                "active": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2018-11-01",
+            "name": "[concat(parameters('sites_azureupward_docker_name'), '/461598728869459')]",
+            "location": "Brazil South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_azureupward_docker_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author": "Hosted Agent",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"70d6baa74c404b7019a2c9557a8280f469881ab7\",\"buildId\":\"70d6baa74c404b7019a2c9557a8280f469881ab7\",\"releaseId\":\"46\",\"buildNumber\":\"70d6baa74\",\"releaseName\":\"Release-2\",\"repoProvider\":\"GitHub\",\"repoName\":\"julioarruda/azureupward2020\",\"collectionUrl\":\"https://dev.azure.com/demoserievideo1/\",\"teamProject\":\"204bda38-4b9c-4669-b2f7-c1fb8667d9ed\",\"buildProjectUrl\":\"https://dev.azure.com/demoserievideo1/204bda38-4b9c-4669-b2f7-c1fb8667d9ed\",\"repositoryUrl\":\"https://github.com/julioarruda/azureupward2020\",\"branch\":\"main\",\"teamProjectName\":\"ExpoETEP2019\",\"slotName\":\"production\"}",
+                "start_time": "2020-08-29T19:21:10.2374069Z",
+                "end_time": "2020-08-29T19:21:10.2374069Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2018-11-01",
+            "name": "[concat(parameters('sites_azureupward_docker_name'), '/', parameters('sites_azureupward_docker_name'), '.azurewebsites.net')]",
+            "location": "Brazil South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_azureupward_docker_name'))]"
+            ],
+            "properties": {
+                "siteName": "azureupward-docker",
+                "hostNameType": "Verified"
+            }
+        }
+    ]
+}
