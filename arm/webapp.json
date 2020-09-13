@@ -359,26 +359,6 @@
             }
         },
         {
-            "type": "Microsoft.Web/sites/slots/deployments",
-            "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_azureupward_name'), '/dev/2979fb411ed745e5968ceb2d97fedf72')]",
-            "location": "Brazil South",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites/slots', parameters('sites_azureupward_name'), 'dev')]",
-                "[resourceId('Microsoft.Web/sites', parameters('sites_azureupward_name'))]"
-            ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "N/A",
-                "deployer": "VSTS",
-                "message": "{\"type\":\"deployment\",\"buildId\":\"\",\"releaseId\":\"2\",\"buildNumber\":\"\",\"releaseName\":\"Release-1\",\"collectionUrl\":\"https://dev.azure.com/demoserievideo1/\",\"teamProject\":\"f4357a81-3fe5-4dbd-9302-3c0d79586988\",\"buildProjectUrl\":\"\",\"teamProjectName\":\"AzureUpward\",\"slotName\":\"dev\"}",
-                "start_time": "2020-08-29T20:39:07.0578848Z",
-                "end_time": "2020-08-29T20:39:07.6985268Z",
-                "active": true
-            }
-        },
-        {
             "type": "Microsoft.Web/sites/slots/hostNameBindings",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sites_azureupward_name'), '/dev/', parameters('sites_azureupward_name'), '-dev.azurewebsites.net')]",
