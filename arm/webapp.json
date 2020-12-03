@@ -7,7 +7,7 @@
             "type": "String"
         },
         "serverfarms_ASP_vssummit_ba15_externalid": {
-            "defaultValue": "/subscriptions/fbef5108-6185-4658-9f2b-7a5f7d58b456/resourceGroups/vssummit/providers/Microsoft.Web/serverfarms/ASP-vssummit-ba15",
+            "defaultValue": "/subscriptions/fbef5108-6185-4658-9f2b-7a5f7d58b456/resourceGroups/dotnetcore/providers/Microsoft.Web/serverfarms/mhce2e",
             "type": "String"
         }
     },
