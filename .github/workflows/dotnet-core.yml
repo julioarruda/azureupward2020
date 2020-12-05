@@ -47,7 +47,7 @@ jobs:
   
     - name: GitVersion
       id: gitversion
-      uses: nmcc/actions/gitversion@v1
+      uses: nmcc/actions/gitversion@v1.0.0
       with:
         path-to-gitversion: packages/GitVersion.CommandLine/tools/GitVersion.exe
 
