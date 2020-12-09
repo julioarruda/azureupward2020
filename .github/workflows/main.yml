@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
+      url: 'https://julioarruda.com'
     needs: build
     steps:
       - name: Run a one-line script
